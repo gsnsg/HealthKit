@@ -8,40 +8,39 @@
 import SwiftUI
 
 struct EventRow: View {
-    private let foodName = "Chicken Biryani"
-    private let numOfImages = 10
-    private let protein = 10
-    private let carbs = 10
-    private let fats = 10
+    
+    let entry: EventRowDataSource
     
     var body: some View {
-        
         VStack(alignment: .leading) {
             HStack {
-                Text(foodName)
+                Text(entry.name ?? "N/A")
                     .fontWeight(.bold)
                     .font(.system(size: 20))
                 Spacer()
-                Text("\(numOfImages) Image/'s")
+                Text("\(entry.uiImages.count) Image/'s")
+                    .fontWeight(.bold)
                     .font(.system(size: 15))
             }
             
-            Text("Protein - \(10)gms, Carbs - \(10)gms, Fats - \(10)gms")
+            Text("Protein - \(entry.protein ?? "0")gms, Carbs - \(entry.carbs ?? "0")gms, Fats - \(entry.fats ?? "0")gms")
                 .font(.system(size: 15))
                 .padding(.top, 12)
+            
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack {
+                    ForEach(entry.uiImages, id: \.self) { image in
+                        Image(uiImage: image)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 100, height: 100)
+                    }
+                }
+            }
         }
         .padding()
         .frame(width: UIScreen.main.bounds.width - 40)
         .border(Color.gray, width: 1)
         .padding(.horizontal, 20)
     }
-}
-
-#Preview {
-    List {
-        ForEach(0 ..< 10) { _ in
-            EventRow()
-        }
-    }
-    .listStyle(.plain)
 }

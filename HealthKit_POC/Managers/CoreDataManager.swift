@@ -46,83 +46,49 @@ class CoreDataManager {
 
 // Diary View Methods
 extension CoreDataManager {
-    func saveDiaryEntry(info: [String : String], images: Data?, isFavorite: Bool = false) throws {
-        let entry = DiaryEntry(context: managedObjectContext)
+    func saveEntry(entityName: String, info: [String: Any]) throws {
+        guard let entity = NSEntityDescription.entity(forEntityName: entityName, in: managedObjectContext) else {
+            throw NSError(domain: "", code: 1001, userInfo: [NSLocalizedDescriptionKey: "Entity \(entityName) not found in context"])
+        }
+        
+        let entry = NSManagedObject(entity: entity, insertInto: managedObjectContext)
         
         info.forEach { (key, value) in
             entry.setValue(value, forKey: key)
         }
         
-        entry.setValue(Date(), forKey: "date")
-        entry.setValue(images, forKey: "images")
         try saveContext()
-        print("Saved Entries")
+        print("Saved Entry!")
     }
     
-    func saveDiaryEntry(entry: any FoodEntry) throws {
+    func saveDiaryEntry(info: [String: Any]) throws {
         let entry = DiaryEntry(context: managedObjectContext)
-        let imageData = entry.uiImages.count > 0 ? entry.uiImages.encodeImagesToData() : nil
-
-        entry.setValue(entry.date, forKey: "date")
-        entry.setValue(entry.protein, forKey: "protein")
-        entry.setValue(entry.fats, forKey: "fats")
-        entry.setValue(entry.carbs, forKey: "carbs")
-        entry.setValue(imageData, forKey: "images")
-        try saveContext()
-        print("Saved Entries from favorites")
-    }
-    
-    func getAllDiaryEntries() -> [any FoodEntry] {
-        let fetchRequest: NSFetchRequest<DiaryEntry> = NSFetchRequest(entityName: "DiaryEntry")
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
-        
-        do {
-            let fetchedResults = try managedObjectContext.fetch(fetchRequest)
-            
-            var entries = [DiaryEntryData]()
-            
-            for result in fetchedResults {
-                entries.append(.init(entry: result))
-            }
-            print("Core Data Entries: \(entries.count)")
-            return entries
-        } catch {
-            return []
-        }
-    }
-    
-    func saveFavorites(info: [String : String], images: Data?) throws {
-        let entry = FavoritesEntry(context: managedObjectContext)
-
         info.forEach { (key, value) in
             entry.setValue(value, forKey: key)
         }
         
-        entry.setValue(Date(), forKey: "date")
-        entry.setValue(images, forKey: "images")
         try saveContext()
-        print("Saved Entries")
+        print("Saved Entry!")
     }
     
-    func getAllFavorites() -> [any FoodEntry] {
-        let fetchRequest: NSFetchRequest<FavoritesEntry> = NSFetchRequest(entityName: "FavoritesEntry")
-
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
-        
-        do {
-            let fetchedResults = try managedObjectContext.fetch(fetchRequest)
-            
-            var entries = [DiaryEntryData]()
-            
-            for result in fetchedResults {
-                entries.append(.init(entry: result))
-            }
-            print("Core Data Entries: \(entries.count)")
-            return entries
-        } catch {
+    // fetch the entries with in a time frame
+    func fetchAllEntries<T: NSManagedObject>(using predicate: NSPredicate? = nil) -> [T] {
+        guard let fetchRequest: NSFetchRequest<T> = T.fetchRequest() as? NSFetchRequest<T> else {
             return []
         }
+        
+        if let predicate = predicate {
+            fetchRequest.predicate = predicate
+        }
+        
+        do {
+            // Perform the fetch request
+            let results = try managedObjectContext.fetch(fetchRequest)
+            return results
+        } catch {
+            print("Error fetching data: \(error)")
+            return []
+        }
+        
     }
-    
-    
 }

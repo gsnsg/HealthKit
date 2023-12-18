@@ -5,99 +5,91 @@
 //  Created by Sai Nikhit Gulla on 12/7/23.
 //
 
+import Combine
 import SwiftUI
 import FSCalendar
 
-
-struct CalendarViewRepresentable: UIViewRepresentable {
+class CalendarViewModel: ObservableObject {
     
-    @Binding var selectedDate: Date
+    @Published var selectedDate = Date()
     
-    func makeUIView(context: Context) -> FSCalendar {
-        let calendar = FSCalendar()
-        calendar.delegate = context.coordinator
-        calendar.dataSource = context.coordinator
-        
-        // Added the below code to change calendar appearance
-        calendar.appearance.todayColor = UIColor(displayP3Red: 0,
-                                                 green: 0,
-                                                 blue: 0, alpha: 0)
-        
-        // TODO:- Update Color Schemas
-        calendar.appearance.todaySelectionColor = .red
-        calendar.appearance.titleTodayColor = .black
-        
-        calendar.appearance.eventSelectionColor = .red
-        calendar.appearance.selectionColor = .red
-        calendar.appearance.eventDefaultColor = .red
-        calendar.appearance.titleTodayColor = .red
-        calendar.appearance.titleFont = .boldSystemFont(ofSize: 15)
-        calendar.appearance.weekdayTextColor = .lightGray
-        calendar.appearance.headerMinimumDissolvedAlpha = 0.12
-        calendar.appearance.headerTitleFont = .systemFont(
-            ofSize: 15,
-            weight: .black)
-        
-        calendar.appearance.headerTitleColor = .darkGray
-        calendar.scrollDirection = .horizontal
-        calendar.scope = .month
-        calendar.clipsToBounds = false
-        
-        return calendar
+    private var cancellables = Set<AnyCancellable>()
+    
+    @Published var dateEntries: [DiaryEntry] = []
+    
+    init() {
+       initializeSubscriptions()
     }
     
-    func updateUIView(_ uiView: FSCalendar, context: Context) {
-        print("Update UI called")
+    private func initializeSubscriptions() {
+        // when new date is selected
+        $selectedDate
+            .map { date in
+                self.fetchEntriesForDate(date: date)
+            }
+            .receive(on: DispatchQueue.main)
+            .sink { entries in
+                self.dateEntries = entries
+            }
+            .store(in: &cancellables)
     }
     
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
-    }
-    
-    class Coordinator: NSObject, FSCalendarDelegate, FSCalendarDataSource {
-        let parent: CalendarViewRepresentable
-        
-        init(_ calendar: CalendarViewRepresentable) {
-            self.parent = calendar
+    func fetchEntriesForDate(date: Date) -> [DiaryEntry] {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month, .day], from: date)
+        guard let startOfDay = calendar.date(from: components) else {
+            return []
         }
         
-        func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-            parent.selectedDate = date
+        // Calculate the end of the day
+        guard let endOfDay = calendar.date(byAdding: .day, value: 1, to: startOfDay) else {
+            return []
         }
+        
+        let predicate = NSPredicate(format: "(date >= %@) AND (date < %@)", argumentArray: [startOfDay, endOfDay])
+        
+        let result: [DiaryEntry] = CoreDataManager.shared.fetchAllEntries(using: predicate)
+        return result
+    }
+    
+    func refresh() {
+        // triggers the subscription
+        selectedDate = Date()
     }
 }
 
 struct CalendarView: View {
-    @State private var selectedDate = Date()
+    
+    @StateObject private var calendarViewModel = CalendarViewModel()
 
     var body: some View {
         NavigationStack {
             VStack(spacing: .zero) {
-                CalendarViewRepresentable(selectedDate: $selectedDate)
+                CalendarViewRepresentable(selectedDate: $calendarViewModel.selectedDate)
                 Divider()
-                // Get the data
-                List {
-                    ForEach(0 ..< 9) { _ in
-                        EventRow()
-                    }
+                List(calendarViewModel.dateEntries, id: \.date) { entry in 
+                    EventRow(entry: entry)
                 }
                 .listStyle(.plain)
             }
             .navigationTitle("Calendar")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Today") {
-                        // Action for Today button
-                        selectedDate = Date()
-                    }
-                }
+                // TODO:- do this later
+//                ToolbarItem(placement: .navigationBarLeading) {
+//                    Button("Today") {
+//                        // Action for Today button
+//                        selectedDate = Date()
+//                    }
+//                }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        // Action for Plus button
-                    }) {
+                    NavigationLink {
+                        DiaryView()
+                            .environmentObject(calendarViewModel)
+                    } label: {
                         Image(systemName: "plus")
                     }
+
                 }
             }
         }

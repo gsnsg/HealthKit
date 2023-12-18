@@ -9,19 +9,18 @@
 /* Begin PBXBuildFile section */
 		1700C3132AF983BE00B8E8DE /* DiaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1700C3122AF983BE00B8E8DE /* DiaryViewModel.swift */; };
 		1700C3162AF991A700B8E8DE /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1700C3152AF991A700B8E8DE /* Array+Extension.swift */; };
-		1700C3182AF99ABF00B8E8DE /* DiaryEntries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1700C3172AF99ABE00B8E8DE /* DiaryEntries.swift */; };
 		1700C31A2AF99D8900B8E8DE /* DiaryEntry+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1700C3192AF99D8800B8E8DE /* DiaryEntry+Extension.swift */; };
-		1700C31C2AF9A0EC00B8E8DE /* DiaryEntryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1700C31B2AF9A0EC00B8E8DE /* DiaryEntryData.swift */; };
-		1700C31E2AF9A19600B8E8DE /* DiaryEntriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1700C31D2AF9A19600B8E8DE /* DiaryEntriesViewModel.swift */; };
 		1700C3202AF9E84200B8E8DE /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1700C31F2AF9E84200B8E8DE /* HomeViewModel.swift */; };
 		17192F502AD4A9A7008609F4 /* CSVHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17192F4F2AD4A9A7008609F4 /* CSVHeaders.swift */; };
 		17192F572AD4DDFB008609F4 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17192F562AD4DDFA008609F4 /* UserDefaultsManager.swift */; };
 		17192F592AD4DFCB008609F4 /* CSVFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17192F582AD4DFCB008609F4 /* CSVFile.swift */; };
-		1730D5222A9D3DAE0097B497 /* HealthKit_POCApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1730D5212A9D3DAE0097B497 /* HealthKit_POCApp.swift */; };
+		1730D5222A9D3DAE0097B497 /* HealthierMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1730D5212A9D3DAE0097B497 /* HealthierMe.swift */; };
 		1730D5242A9D3DAE0097B497 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1730D5232A9D3DAE0097B497 /* HomeView.swift */; };
 		1730D5262A9D3DB00097B497 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1730D5252A9D3DB00097B497 /* Assets.xcassets */; };
 		1730D5292A9D3DB00097B497 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1730D5282A9D3DB00097B497 /* Preview Assets.xcassets */; };
 		1730D5312A9D3E500097B497 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1730D5302A9D3E500097B497 /* HealthKitManager.swift */; };
+		174EA9B82B22551300FEC4C8 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174EA9B72B22551300FEC4C8 /* CalendarView.swift */; };
+		1764398D2B2B969F00320611 /* unused.rb in Resources */ = {isa = PBXBuildFile; fileRef = 1764398C2B2B969F00320611 /* unused.rb */; };
 		1773E5992AA55C4400F4FED7 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1773E5982AA55C4400F4FED7 /* RootView.swift */; };
 		1779617B2AA7131D00F82A2D /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1779617A2AA7131C00F82A2D /* Date+Extension.swift */; };
 		17A41E392AF9440100856361 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A41E382AF9440100856361 /* CoreDataManager.swift */; };
@@ -32,6 +31,9 @@
 		17C78D3F2B1E4BB200D6FF69 /* SelectedImagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C78D3E2B1E4BB200D6FF69 /* SelectedImagesView.swift */; };
 		17C78D452B1E7ED200D6FF69 /* AllFavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C78D442B1E7ED200D6FF69 /* AllFavoritesView.swift */; };
 		17C78D522B1E854000D6FF69 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 17C78D502B1E854000D6FF69 /* DataModel.xcdatamodeld */; };
+		17E6986C2B2A504200A4B546 /* EventRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E6986B2B2A504200A4B546 /* EventRow.swift */; };
+		17E6986F2B2A59A700A4B546 /* CalendarViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E6986E2B2A59A700A4B546 /* CalendarViewRepresentable.swift */; };
+		17E8EEC42B26642B000229A3 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 17E8EEC32B26642B000229A3 /* FSCalendar */; };
 		17F0B8E42AD3603B009DAF27 /* AccelerometerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F0B8E32AD3603B009DAF27 /* AccelerometerManager.swift */; };
 		17F0B8E62AD362C4009DAF27 /* FileNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F0B8E52AD362C4009DAF27 /* FileNames.swift */; };
 /* End PBXBuildFile section */
@@ -39,22 +41,21 @@
 /* Begin PBXFileReference section */
 		1700C3122AF983BE00B8E8DE /* DiaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewModel.swift; sourceTree = "<group>"; };
 		1700C3152AF991A700B8E8DE /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
-		1700C3172AF99ABE00B8E8DE /* DiaryEntries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryEntries.swift; sourceTree = "<group>"; };
 		1700C3192AF99D8800B8E8DE /* DiaryEntry+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DiaryEntry+Extension.swift"; sourceTree = "<group>"; };
-		1700C31B2AF9A0EC00B8E8DE /* DiaryEntryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryEntryData.swift; sourceTree = "<group>"; };
-		1700C31D2AF9A19600B8E8DE /* DiaryEntriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryEntriesViewModel.swift; sourceTree = "<group>"; };
 		1700C31F2AF9E84200B8E8DE /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		17192F4F2AD4A9A7008609F4 /* CSVHeaders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVHeaders.swift; sourceTree = "<group>"; };
 		17192F512AD4B370008609F4 /* HealthKit-POC-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "HealthKit-POC-Info.plist"; sourceTree = SOURCE_ROOT; };
 		17192F562AD4DDFA008609F4 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		17192F582AD4DFCB008609F4 /* CSVFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVFile.swift; sourceTree = "<group>"; };
 		1730D51E2A9D3DAE0097B497 /* HealthKit_POC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthKit_POC.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1730D5212A9D3DAE0097B497 /* HealthKit_POCApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKit_POCApp.swift; sourceTree = "<group>"; };
+		1730D5212A9D3DAE0097B497 /* HealthierMe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthierMe.swift; sourceTree = "<group>"; };
 		1730D5232A9D3DAE0097B497 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		1730D5252A9D3DB00097B497 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1730D5282A9D3DB00097B497 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1730D52F2A9D3DEA0097B497 /* HealthKit_POC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HealthKit_POC.entitlements; sourceTree = "<group>"; };
 		1730D5302A9D3E500097B497 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
+		174EA9B72B22551300FEC4C8 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		1764398C2B2B969F00320611 /* unused.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = unused.rb; sourceTree = "<group>"; };
 		1773E5982AA55C4400F4FED7 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		1779617A2AA7131C00F82A2D /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		17A41E382AF9440100856361 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -65,6 +66,8 @@
 		17C78D3E2B1E4BB200D6FF69 /* SelectedImagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedImagesView.swift; sourceTree = "<group>"; };
 		17C78D442B1E7ED200D6FF69 /* AllFavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllFavoritesView.swift; sourceTree = "<group>"; };
 		17C78D512B1E854000D6FF69 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		17E6986B2B2A504200A4B546 /* EventRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRow.swift; sourceTree = "<group>"; };
+		17E6986E2B2A59A700A4B546 /* CalendarViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewRepresentable.swift; sourceTree = "<group>"; };
 		17F0B8E32AD3603B009DAF27 /* AccelerometerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccelerometerManager.swift; sourceTree = "<group>"; };
 		17F0B8E52AD362C4009DAF27 /* FileNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileNames.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -74,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17E8EEC42B26642B000229A3 /* FSCalendar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,7 +88,6 @@
 			isa = PBXGroup;
 			children = (
 				1700C3122AF983BE00B8E8DE /* DiaryViewModel.swift */,
-				1700C31D2AF9A19600B8E8DE /* DiaryEntriesViewModel.swift */,
 				1700C31F2AF9E84200B8E8DE /* HomeViewModel.swift */,
 				17C78D3C2B1E4B2000D6FF69 /* FavoritesViewModel.swift */,
 			);
@@ -94,6 +97,7 @@
 		1730D5152A9D3DAE0097B497 = {
 			isa = PBXGroup;
 			children = (
+				1764398C2B2B969F00320611 /* unused.rb */,
 				1730D5202A9D3DAE0097B497 /* HealthKit_POC */,
 				1730D51F2A9D3DAE0097B497 /* Products */,
 			);
@@ -112,9 +116,8 @@
 			children = (
 				17192F512AD4B370008609F4 /* HealthKit-POC-Info.plist */,
 				1730D52F2A9D3DEA0097B497 /* HealthKit_POC.entitlements */,
-				1730D5212A9D3DAE0097B497 /* HealthKit_POCApp.swift */,
+				1730D5212A9D3DAE0097B497 /* HealthierMe.swift */,
 				17192F582AD4DFCB008609F4 /* CSVFile.swift */,
-				17C78D432B1E4D3300D6FF69 /* Data Models */,
 				1700C3142AF983F400B8E8DE /* View Models */,
 				17F0B8E72AD362C8009DAF27 /* Constants */,
 				1779617C2AA7136200F82A2D /* Extensions */,
@@ -144,6 +147,7 @@
 				17C78D412B1E4BFC00D6FF69 /* Diary */,
 				17C78D422B1E4C0600D6FF69 /* Favorites */,
 				17C78D402B1E4BBA00D6FF69 /* Common */,
+				17E6986D2B2A598D00A4B546 /* Calendar */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -170,7 +174,6 @@
 			isa = PBXGroup;
 			children = (
 				17AFE84C2AF1A7BB004FA720 /* DiaryView.swift */,
-				1700C3172AF99ABE00B8E8DE /* DiaryEntries.swift */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
@@ -184,12 +187,14 @@
 			path = Favorites;
 			sourceTree = "<group>";
 		};
-		17C78D432B1E4D3300D6FF69 /* Data Models */ = {
+		17E6986D2B2A598D00A4B546 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				1700C31B2AF9A0EC00B8E8DE /* DiaryEntryData.swift */,
+				17E6986B2B2A504200A4B546 /* EventRow.swift */,
+				174EA9B72B22551300FEC4C8 /* CalendarView.swift */,
+				17E6986E2B2A59A700A4B546 /* CalendarViewRepresentable.swift */,
 			);
-			path = "Data Models";
+			path = Calendar;
 			sourceTree = "<group>";
 		};
 		17F0B8E22AD35F45009DAF27 /* Managers */ = {
@@ -219,6 +224,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1730D52C2A9D3DB00097B497 /* Build configuration list for PBXNativeTarget "HealthKit_POC" */;
 			buildPhases = (
+				1764398B2B2B962F00320611 /* Run Script */,
 				1730D51A2A9D3DAE0097B497 /* Sources */,
 				1730D51B2A9D3DAE0097B497 /* Frameworks */,
 				1730D51C2A9D3DAE0097B497 /* Resources */,
@@ -228,6 +234,9 @@
 			dependencies = (
 			);
 			name = HealthKit_POC;
+			packageProductDependencies = (
+				17E8EEC32B26642B000229A3 /* FSCalendar */,
+			);
 			productName = HealthKit_POC;
 			productReference = 1730D51E2A9D3DAE0097B497 /* HealthKit_POC.app */;
 			productType = "com.apple.product-type.application";
@@ -240,7 +249,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1510;
 				TargetAttributes = {
 					1730D51D2A9D3DAE0097B497 = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -256,6 +265,9 @@
 				Base,
 			);
 			mainGroup = 1730D5152A9D3DAE0097B497;
+			packageReferences = (
+				17E8EEC22B26642A000229A3 /* XCRemoteSwiftPackageReference "FSCalendar" */,
+			);
 			productRefGroup = 1730D51F2A9D3DAE0097B497 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -272,10 +284,32 @@
 			files = (
 				1730D5292A9D3DB00097B497 /* Preview Assets.xcassets in Resources */,
 				1730D5262A9D3DB00097B497 /* Assets.xcassets in Resources */,
+				1764398D2B2B969F00320611 /* unused.rb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1764398B2B2B962F00320611 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "file=\"unused.rb\"\nif [ -f \"$file\" ]\nthen\necho \"$file found.\"\nruby unused.rb xcode\nelse\necho \"unused.rb doesn't exist\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1730D51A2A9D3DAE0097B497 /* Sources */ = {
@@ -283,16 +317,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				17C78D3B2B1E4AF500D6FF69 /* AddFavoriteItemView.swift in Sources */,
+				17E6986C2B2A504200A4B546 /* EventRow.swift in Sources */,
 				17F0B8E62AD362C4009DAF27 /* FileNames.swift in Sources */,
-				1700C31E2AF9A19600B8E8DE /* DiaryEntriesViewModel.swift in Sources */,
 				1779617B2AA7131D00F82A2D /* Date+Extension.swift in Sources */,
 				17AFE84D2AF1A7BB004FA720 /* DiaryView.swift in Sources */,
 				1700C3162AF991A700B8E8DE /* Array+Extension.swift in Sources */,
-				1700C31C2AF9A0EC00B8E8DE /* DiaryEntryData.swift in Sources */,
+				174EA9B82B22551300FEC4C8 /* CalendarView.swift in Sources */,
 				1700C31A2AF99D8900B8E8DE /* DiaryEntry+Extension.swift in Sources */,
 				1700C3132AF983BE00B8E8DE /* DiaryViewModel.swift in Sources */,
 				1730D5242A9D3DAE0097B497 /* HomeView.swift in Sources */,
-				1730D5222A9D3DAE0097B497 /* HealthKit_POCApp.swift in Sources */,
+				1730D5222A9D3DAE0097B497 /* HealthierMe.swift in Sources */,
 				17192F502AD4A9A7008609F4 /* CSVHeaders.swift in Sources */,
 				17192F592AD4DFCB008609F4 /* CSVFile.swift in Sources */,
 				17C78D3F2B1E4BB200D6FF69 /* SelectedImagesView.swift in Sources */,
@@ -304,9 +338,9 @@
 				17A41E392AF9440100856361 /* CoreDataManager.swift in Sources */,
 				17C78D3D2B1E4B2000D6FF69 /* FavoritesViewModel.swift in Sources */,
 				17C78D522B1E854000D6FF69 /* DataModel.xcdatamodeld in Sources */,
-				1700C3182AF99ABF00B8E8DE /* DiaryEntries.swift in Sources */,
 				17C78D452B1E7ED200D6FF69 /* AllFavoritesView.swift in Sources */,
 				17AFE84B2AF19AC5004FA720 /* UserDetailView.swift in Sources */,
+				17E6986F2B2A59A700A4B546 /* CalendarViewRepresentable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,6 +383,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -409,6 +444,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -438,6 +474,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"HealthKit_POC/Preview Content\"";
 				DEVELOPMENT_TEAM = 6NQBNW2Z7X;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "HealthKit-POC-Info.plist";
 				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "want to use for testing purposes";
@@ -473,6 +510,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"HealthKit_POC/Preview Content\"";
 				DEVELOPMENT_TEAM = 6NQBNW2Z7X;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "HealthKit-POC-Info.plist";
 				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "want to use for testing purposes";
@@ -519,6 +557,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		17E8EEC22B26642A000229A3 /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.8.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		17E8EEC32B26642B000229A3 /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17E8EEC22B26642A000229A3 /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		17C78D502B1E854000D6FF69 /* DataModel.xcdatamodeld */ = {

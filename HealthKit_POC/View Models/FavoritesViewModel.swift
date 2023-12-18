@@ -18,16 +18,18 @@ class FavoritesViewModel: ObservableObject {
         }
     }
     
-    @Published var entries: [any FoodEntry] = []
-    
+    @Published var favorites: [FavoriteEntry] = []
     @Published var dismissAddFavoriteView = false
-    @Published var name: String = ""
+    @Published var foodName: String = ""
     @Published var protein: String = ""
     @Published var carbs: String = ""
     @Published var fats: String = ""
     
     private var itemsSet = Set<PhotosPickerItem>()
     
+    init() {
+        getAllFavorites()
+    }
     func processSelectedItems(pickedItems: [PhotosPickerItem]) {
         pickedItems.forEach { item in
             // if its already in images then no need to consider it
@@ -52,17 +54,20 @@ class FavoritesViewModel: ObservableObject {
     }
     
     func saveFavoriteItem() {
-        
-        let dataDict = [ "protein" : protein, "carbs" : carbs, "fats" : fats, "name" : name ]
-        let imageData = selectedImages.count > 0 ? selectedImages.encodeImagesToData() : nil
+        let imageData = !selectedImages.isEmpty ? selectedImages.encodeImagesToData() : nil
+        let dataDict: [String : Any] = [
+            "name" : foodName,
+            "date":Date(), // default
+            "protein" : protein,
+            "carbs" : carbs,
+            "fats" : fats,
+            "images" : imageData
+        ]
         
         do {
-            try CoreDataManager.shared.saveFavorites(info: dataDict, images: imageData)
-            resetForm()
-            DispatchQueue.main.async {
-                self.dismissAddFavoriteView = true
-            }
-            
+            try CoreDataManager.shared.saveEntry(entityName: "FavoriteEntry", info: dataDict)
+            self.dismissAddFavoriteView = true
+            self.getAllFavorites()
         } catch {
             print("Error: \(error.localizedDescription)")
         }
@@ -74,17 +79,12 @@ class FavoritesViewModel: ObservableObject {
     
     func getAllFavorites() {
         DispatchQueue.main.async {
-            self.entries = CoreDataManager.shared.getAllFavorites()
+            self.favorites = CoreDataManager.shared.fetchAllEntries()
         }
     }
     
     private func resetForm() {
-        name = ""
-        protein = ""
-        fats = ""
-        carbs = ""
-        selectedItems = []
-        selectedImages = []
+        // go back to all favorites
     }
     
 }

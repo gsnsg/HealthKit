@@ -23,9 +23,14 @@ class DiaryViewModel: ObservableObject {
         }
     }
     
+    // Form Values
+    @Published var foodName: String = ""
+    @Published var selectedDate = Date()
     @Published var protein: String = ""
     @Published var carbs: String = ""
     @Published var fats: String = ""
+    
+    @Published var dismissView = false
     
     private var itemsSet = Set<PhotosPickerItem>()
     
@@ -53,17 +58,34 @@ class DiaryViewModel: ObservableObject {
     }
     
     func submitEntry() {
-        // TODO:- Data Validation Goes here
         // api call goes here
         // core data entry
         
-        let dataDict = [ "protein" : protein, "carbs" : carbs, "fats" : fats]
-        let imageData = selectedImages.count > 0 ? selectedImages.encodeImagesToData() : nil
+        let imageData = !selectedImages.isEmpty ? selectedImages.encodeImagesToData() : nil
+        
+        let dataDict: [String : Any] = [
+            "name" : foodName,
+            "date" : selectedDate,
+            "protein" : protein,
+            "carbs" : carbs,
+            "fats" : fats,
+            "images" : imageData]
         
         do {
-            try CoreDataManager.shared.saveDiaryEntry(info: dataDict, images: imageData)
+            try CoreDataManager.shared.saveEntry(entityName: "DiaryEntry", info: dataDict)
+            dismissView = true
         } catch {
             print("Error: \(error.localizedDescription)")
         }
+    }
+    
+    // Update from favorite
+    func fillDetailsFromFavorite(favorite: FavoriteEntry) {
+        foodName = favorite.name ?? ""
+        protein = favorite.protein ?? ""
+        carbs = favorite.carbs ?? ""
+        fats = favorite.fats ?? ""
+        selectedDate = Date()
+        selectedImages = favorite.uiImages
     }
 }

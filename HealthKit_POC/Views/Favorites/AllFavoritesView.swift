@@ -9,29 +9,20 @@ import SwiftUI
 
 struct AllFavoritesView: View {
     @StateObject var favoritesViewModel = FavoritesViewModel()
-    @State private var isSheetPresented = false
+    @EnvironmentObject var parent: DiaryViewModel
+    
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        List(favoritesViewModel.entries, id: \.id) { entry in
-            VStack(alignment: .leading) {
-                Text(entry.name)
-                Text("Date: \(entry.date, formatter: itemFormatter)")
-                Text("Protein: \(entry.protein)g, Carbs: \(entry.carbs)g, Fats: \(entry.fats)g")
-                // Display images if needed
-                // For example, using a ScrollView
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack {
-                        ForEach(entry.uiImages, id: \.self) { image in
-                            Image(uiImage: image)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 100, height: 100)
-                        }
-                    }
+        List(favoritesViewModel.favorites, id: \.date) { favorite in
+                EventRow(entry: favorite)
+                .onTapGesture {
+                    didTapFavorite(favorite)
                 }
-            }
         }
-        .navigationTitle("Favorites")
+        .listStyle(.plain)
+        .navigationTitle("Choose a Favorite")
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavigationLink {
@@ -41,26 +32,11 @@ struct AllFavoritesView: View {
                     Image(systemName: "plus")
                 }
             }
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: {
-                    // Refresh action
-                    favoritesViewModel.getAllFavorites()
-                }) {
-                    Image(systemName: "arrow.clockwise")
-                }
-            }
-        }
-        .onAppear {
-            favoritesViewModel.getAllFavorites()
         }
     }
+    
+    private func didTapFavorite(_ favorite: FavoriteEntry) {
+        parent.fillDetailsFromFavorite(favorite: favorite)
+        self.presentationMode.wrappedValue.dismiss()
+    }
 }
-
-
-// Formatter for the date
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .short
-    return formatter
-}()

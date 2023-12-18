@@ -19,29 +19,25 @@ struct RootView: View {
                 Label("Health", systemImage: "heart.fill")
             }
             
-            NavigationStack {
-                DiaryView()
-                    .navigationTitle("Dairy")
-            }
-            .tabItem {
-                Label("Nutrition", systemImage: "fork.knife.circle")
-            }
+            CalendarView()
+                .tabItem {
+                    Label("Nutrition", systemImage: "fork.knife.circle")
+                }
             
-           
+            
             NavigationStack {
                 UserDetailView()
                     .navigationTitle("User Details")
             }
             .tabItem {
-                    Label("Me", systemImage: "person.fill")
+                Label("Me", systemImage: "person.fill")
             }
         }
         .tint(.red)
     }
 }
 
-struct RooView_Previews: PreviewProvider {
-    static var previews: some View {
-        RootView()
-    }
+#Preview {
+    RootView()
+        .preferredColorScheme(.light)
 }

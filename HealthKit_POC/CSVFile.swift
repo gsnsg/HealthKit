@@ -42,4 +42,3 @@ struct CSVFile: FileDocument {
         return fileWrapper
     }
 }
-

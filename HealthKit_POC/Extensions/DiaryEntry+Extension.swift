@@ -7,24 +7,30 @@
 
 import UIKit
 
-extension DiaryEntry {
+protocol EventRowDataSource {
+    var name: String? { get }
+    var protein: String? { get }
+    var carbs: String? { get }
+    var fats: String? { get }
+    var uiImages: [UIImage] { get }
+}
+
+extension DiaryEntry: EventRowDataSource {
     var uiImages: [UIImage] {
-        get {
-            guard let data = self.images, let decodedImages = Array<UIImage>.decodeImagesFromData(data: data) else {
-                return []
-            }
-            return decodedImages
+        guard let data = self.images, let decodedImages: [UIImage] = [UIImage].decodeImagesFromData(data: data) else {
+            return []
         }
+        return decodedImages
+        
     }
 }
 
-extension FavoritesEntry {
+extension FavoriteEntry: EventRowDataSource {
     var uiImages: [UIImage] {
-        get {
-            guard let data = self.images, let decodedImages = Array<UIImage>.decodeImagesFromData(data: data) else {
-                return []
-            }
-            return decodedImages
+        guard let data = self.images, let decodedImages: [UIImage] = [UIImage].decodeImagesFromData(data: data) else {
+            return []
         }
+        return decodedImages
+        
     }
 }

@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 public enum CSVHeaders {
     case steps
     case heartRate

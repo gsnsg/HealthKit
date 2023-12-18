@@ -11,8 +11,6 @@ struct SelectedImagesView: View {
     
     var images: [UIImage]
     
-    private let gridItemLayout = [GridItem(.fixed(200)), GridItem(.fixed(200))]
-    
     var body: some View {
         ScrollView {
             LazyVGrid(columns: [.init(.adaptive(minimum: 100, maximum: .infinity), spacing: 3)], spacing: 3) {

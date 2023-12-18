@@ -12,12 +12,10 @@ struct AddFavoriteItemView: View {
     @EnvironmentObject private var favoritesViewModel: FavoritesViewModel
     @Environment(\.presentationMode) var presentationMode
     
-    @State private var showSelectedImagesSheet = false
-    
     var body: some View {
         Form {
-            Section(header: Text("Name")) {
-                TextField("Name", text: $favoritesViewModel.name)
+            Section(header: Text("Food Details")) {
+                TextField("Name", text: $favoritesViewModel.foodName)
             }
             
             Section(header: Text("Images")) {
@@ -31,9 +29,8 @@ struct AddFavoriteItemView: View {
                 } label: {
                     Text("View selected photos")
                         .foregroundStyle(.red)
-                }.disabled(favoritesViewModel.selectedImages.count == 0)
+                }.disabled(favoritesViewModel.selectedImages.isEmpty)
             }
-            
             
             Section(header: Text("Macros (in gms)")) {
                 TextField("Protein (g)", text: $favoritesViewModel.protein)
@@ -50,10 +47,8 @@ struct AddFavoriteItemView: View {
                 Text("Save Favorites")
             }
         }
-        .onChange(of: $favoritesViewModel.dismissAddFavoriteView.wrappedValue) { newValue in
-            if newValue {
-                presentationMode.wrappedValue.dismiss()
-            }
+        .onChange(of: favoritesViewModel.dismissAddFavoriteView) { _ in
+           presentationMode.wrappedValue.dismiss()
         }
     }
 }

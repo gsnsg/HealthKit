@@ -11,10 +11,20 @@ import PhotosUI
 struct DiaryView: View {
     @StateObject private var diaryViewModel = DiaryViewModel()
     
+    @EnvironmentObject private var parent: CalendarViewModel
+    @Environment(\.presentationMode) var presentationMode
+    
+    
     @State private var showSelectedImagesSheet = false
     
     var body: some View {
         Form {
+            
+            Section(header: Text("Food Details")) {
+                            TextField("Enter Food Name", text: $diaryViewModel.foodName)
+                            DatePicker("Select Date & Time", selection: $diaryViewModel.selectedDate, displayedComponents: [.date, .hourAndMinute])
+            }
+            
             Section(header: Text("Images")) {
                 PhotosPicker(selection: $diaryViewModel.selectedItems,
                              matching: .images) {
@@ -26,7 +36,7 @@ struct DiaryView: View {
                 } label: {
                     Text("View selected photos")
                         .foregroundStyle(.red)
-                }.disabled(diaryViewModel.selectedImages.count == 0)
+                }.disabled(diaryViewModel.selectedImages.isEmpty)
             }
             
             Section(header: Text("Macros (in gms)")) {
@@ -43,20 +53,20 @@ struct DiaryView: View {
             }) {
                 Text("Save Entry")
             }
-            
-            NavigationLink {
-                DiaryEntries() 
-            } label: {
-                Text("View Past Entries")
-                    .foregroundStyle(.red)
+        }
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                NavigationLink {
+                    AllFavoritesView()
+                        .environmentObject(diaryViewModel)
+                } label: {
+                    Text("Add from Favorites")
+                        .foregroundStyle(.red)
+                }
             }
-            
-            NavigationLink {
-                AllFavoritesView()
-            } label: {
-                Text("Add/Update from Favorites")
-                    .foregroundStyle(.red)
-            }
+        }.onChange(of: diaryViewModel.dismissView) { _ in
+            parent.refresh()
+            self.presentationMode.wrappedValue.dismiss()
         }
     }
 }
