@@ -8,10 +8,11 @@
 import SwiftUI
 
 @main
-struct HealthKit_POCApp: App {
+struct HealthierMe: App {
     var body: some Scene {
         WindowGroup {
             RootView()
+                .preferredColorScheme(.light) 
         }
     }
 }
